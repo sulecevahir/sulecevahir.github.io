@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Şule Cevahir | Çevirmen & Yaratıcı Edit Adayı</title>
+
+  <!-- Google Fonts: 'Syne' (Modern Retro Başlıklar) ve 'Plus Jakarta Sans' (Pürüzsüz / Akıcı Gövde Metni) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* 
+      =======================================================
+      1. RENK PALETİ VE DEĞİŞKENLER (Pastel Yeşil & Retro-Chic)
+      =======================================================
+    */
+    :root {
+      --bg-canvas: #f6f8f4;          /* Sıcak sütlü adaçayı zemin */
+      --card-bg: #ffffff;            /* Temiz beyaz kart zemini */
+      --sage-deep: #2e4732;          /* Derin retro orman yeşili (ana metin & vurgular) */
+      --sage-soft: #4f6f52;          /* Orta yumuşak adaçayı yeşili */
+      --sage-mint: #dceada;          /* Açık pastel nane / etiket rengi */
+      --sage-glow: #eaf3e8;          /* Çok açık nane ışıltısı */
+      --warm-cream: #faf5ee;         /* Sıcak vanilya / kahve alt tonu */
+      --accent-coral: #e8998d;       /* Pastel mercan / retro rozet tonu */
+      --text-main: #1f2b21;          /* Göz yormayan koyu yeşil-füme gövde metni */
+      --text-muted: #576b5c;         /* İkincil yumuşak açıklama rengi */
+      --border-subtle: #d8e2d6;      /* İnce zarif kart çerçevesi */
+      --shadow-smooth: 0 10px 30px -4px rgba(46, 71, 50, 0.07), 0 4px 12px -2px rgba(46, 71, 50, 0.04);
+      --shadow-hover: 0 16px 36px -6px rgba(46, 71, 50, 0.12), 0 6px 16px -2px rgba(46, 71, 50, 0.06);
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.65;
+      padding: 32px 16px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      /* Arka planda organik retro doku ve yumuşak gradyan */
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(220, 234, 218, 0.6) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(250, 245, 238, 0.8) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 660px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* 
+      =======================================================
+      2. ÜST BAR & DİL DEĞİŞTİRİCİ (Smooth Pill Button)
+      =======================================================
+    */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 4px;
+    }
+
+    .retro-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--sage-soft);
+      font-family: 'Space Mono', monospace;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #6bb377;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(107, 179, 119, 0.25);
+      animation: pulse 2.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.18); opacity: 0.7; }
+    }
+
+    .lang-toggle {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      padding: 7px 16px;
+      border-radius: 99px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--sage-deep);
+      cursor: pointer;
+      box-shadow: var(--shadow-smooth);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-toggle:hover {
+      border-color: var(--sage-soft);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      background: var(--warm-cream);
+    }
+
+    /* 
+      =======================================================
+      3. SMOOTH KART YAPISI (Hafif gölgeler, yuvarlak köşeler)
+      =======================================================
+    */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--shadow-smooth);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: #c7d8c5;
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* 
+      =======================================================
+      4. PROFİL & HERO KARTI
+      =======================================================
+    */
+    .profile-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .badge-year {
+      align-self: flex-start;
+      background: var(--sage-mint);
+      color: var(--sage-deep);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 99px;
+      letter-spacing: 0.3px;
+    }
+
+    h1.hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.6px;
+      color: var(--sage-deep);
+    }
+
+    .hero-education {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .one-liner-banner {
+      margin-top: 6px;
+      background: var(--warm-cream);
+      border-left: 3.5px solid var(--sage-soft);
+      padding: 13px 18px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* SİTEYE ÖZEL DOKUNUŞ: Sadece Çevirmen Değil */
+    .special-highlight-card {
+      background: linear-gradient(135deg, #fbf7f2 0%, #edf4ec 100%);
+      border: 1px solid #dbe6d9;
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-top: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .highlight-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(46, 71, 50, 0.05);
+    }
+
+    .highlight-content h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--sage-deep);
+      margin-bottom: 3px;
+    }
+
+    .highlight-content p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* 
+      =======================================================
+      5. BÖLÜM BAŞLIKLARI
+      =======================================================
+    */
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--sage-deep);
+      letter-spacing: -0.3px;
+    }
+
+    .section-head-icon {
+      font-size: 1.2rem;
+    }
+
+    .body-desc {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    /* 
+      =======================================================
+      6. ETİKETLER & BECERİ HABLARI (Pills)
+      =======================================================
+    */
+    .pill-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .smooth-pill {
+      background: var(--sage-glow);
+      border: 1px solid var(--border-subtle);
+      color: var(--sage-deep);
+      padding: 8px 14px;
+      border-radius: 99px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .smooth-pill:hover {
+      background: var(--sage-mint);
+      border-color: #c4d8c2;
+      transform: translateY(-1.5px);
+    }
+
+    .pill-level {
+      font-size: 0.74rem;
+      font-family: 'Space Mono', monospace;
+      font-weight: 400;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.7);
+      padding: 2px 7px;
+      border-radius: 99px;
+    }
+
+    /* 
+      =======================================================
+      7. DENEYİM ZAMAN ÇİZELGESİ (Timeline)
+      =======================================================
+    */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .timeline-card {
+      background: var(--warm-cream);
+      border: 1px solid #ebdccc;
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-2px);
+      border-color: #dfcdb9;
+    }
+
+    .timeline-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .timeline-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--sage-deep);
+    }
+
+    .timeline-workplaces {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 3px;
+    }
+
+    .workplace-tag {
+      background: #ffffff;
+      border: 1px solid #d9cbba;
+      color: #634f3b;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .timeline-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-top: 8px;
+    }
+
+    /* 
+      =======================================================
+      8. İLETİŞİM ALANI & BUTON
+      =======================================================
+    */
+    .contact-box {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--sage-deep);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 99px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      letter-spacing: -0.2px;
+      box-shadow: 0 8px 20px rgba(46, 71, 50, 0.2);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      word-break: break-all;
+    }
+
+    .email-btn:hover {
+      background: var(--sage-soft);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(46, 71, 50, 0.28);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'Space Mono', monospace;
+      padding: 10px 0 20px 0;
+    }
+
+    /* 
+      =======================================================
+      9. TELEFON UYUMLULUĞU (Responsive Düzenlemeleri)
+      =======================================================
+    */
+    @media (max-width: 580px) {
+      body {
+        padding: 20px 12px;
+      }
+      .card {
+        padding: 22px 18px;
+      }
+      h1.hero-name {
+        font-size: 1.95rem;
+      }
+      .email-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.9rem;
+        padding: 14px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    
+    <!-- 1. ÜST GEZİNME VE DİL DEĞİŞTİRME BUTONU -->
+    <header class="top-nav" style="justify-content: flex-end;">
+      <button id="langToggleBtn" class="lang-toggle" onclick="toggleLanguage()">
+        <span>🌐</span>
+        <span id="langBtnText">EN</span>
+      </button>
+    </header>
+
+    <!-- 2. ANA KİMLİK & HERO KARTI -->
+    <main class="card">
+      <div class="profile-meta">
+        <span class="badge-year" data-tr="4. SINIF ÇEVİRMEN ADAYI" data-en="4TH YEAR TRANSLATOR CANDIDATE">
+          4. SINIF ÇEVİRMEN ADAYI
+        </span>
+        
+        <h1 class="hero-name">Şule Cevahir</h1>
+        
+        <p class="hero-education" data-tr="İstanbul Yeni Yüzyıl Üniversitesi — İngilizce Mütercim Tercümanlık" data-en="Istanbul Yeni Yuzyil University — English Translation and Interpreting">
+          İstanbul Yeni Yüzyıl Üniversitesi — İngilizce Mütercim Tercümanlık
+        </p>
+
+        <div class="one-liner-banner">
+          <span>🎮</span>
+          <span data-tr="Oyun yerelleştirmesiyle ilgilenen çevirmen adayıyım." data-en="Aspiring translator interested in game localization.">
+            Oyun yerelleştirmesiyle ilgilenen çevirmen adayıyım.
+          </span>
+        </div>
+
+        <!-- SİTEYE ÖZEL DOKUNUŞ: Sadece Çevirmen Değil -->
+        <div class="special-highlight-card">
+          <div class="highlight-icon-box">✨</div>
+          <div class="highlight-content">
+            <h4 data-tr="Sadece çevirmen değil, yaratıcı kurgu & edit odağı" data-en="Beyond translation: creative editing & storytelling">
+              Sadece çevirmen değil, yaratıcı kurgu & edit odağı
+            </h4>
+            <p data-tr="Metinlerin ötesine geçerek oyun evrenini, video kurgu araçlarını ve İngilizce merkezli tüm yaratıcı süreçleri birleştirmeyi seviyorum." data-en="I enjoy going beyond words—combining game worlds, video editing tools, and English-centric creative workflows.">
+              Metinlerin ötesine geçerek oyun evrenini, video kurgu araçlarını ve İngilizce merkezli tüm yaratıcı süreçleri birleştirmeyi seviyorum.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 3. HAKKIMDA BÖLÜMÜ -->
+    <section class="card">
+      <div class="section-head">
+        <span class="section-head-icon">🌿</span>
+        <h2 data-tr="Hakkımda" data-en="About Me">Hakkımda</h2>
+      </div>
+      <p class="body-desc" data-tr="Bu bölümü çevirmen olmak için seçtim ancak İngilizceyle ilgili her işi yapmayı isterim, oyun oynamayı severim, hedefim After Effects gibi edit programlarını öğrenip etkili şekilde kullanabilmek." data-en="I chose this major to become a translator, yet I am eager to take on any English-related role. I love gaming, and my goal is to learn editing software like After Effects and use it effectively.">
+        Bu bölümü çevirmen olmak için seçtim ancak İngilizceyle ilgili her işi yapmayı isterim, oyun oynamayı severim, hedefim After Effects gibi edit programlarını öğrenip etkili şekilde kullanabilmek.
+      </p>
+    </section>
+
+    <!-- 4. ÇALIŞMA DİLLERİ -->
+    <section class="card">
+      <div class="section-head">
+        <span class="section-head-icon">💬</span>
+        <h2 data-tr="Çalışma Dillerim" data-en="Working Languages">Çalışma Dillerim</h2>
+      </div>
+      <div class="pill-grid">
+        <div class="smooth-pill">
+          <span data-tr="Türkçe" data-en="Turkish">Türkçe</span>
+          <span class="pill-level" data-tr="anadil" data-en="native">anadil</span>
+        </div>
+        <div class="smooth-pill">
+          <span data-tr="İngilizce" data-en="English">İngilizce</span>
+          <span class="pill-level" data-tr="ileri seviye" data-en="advanced">ileri seviye</span>
+        </div>
+        <div class="smooth-pill">
+          <span data-tr="İspanyolca" data-en="Spanish">İspanyolca</span>
+          <span class="pill-level" data-tr="başlangıç" data-en="elementary">başlangıç</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. BECERİLERİM -->
+    <section class="card">
+      <div class="section-head">
+        <span class="section-head-icon">⚡</span>
+        <h2 data-tr="Becerilerim" data-en="Skills">Becerilerim</h2>
+      </div>
+      <div class="pill-grid">
+        <div class="smooth-pill">
+          <span>MemoQ</span>
+          <span class="pill-level">CAT</span>
+        </div>
+        <div class="smooth-pill">
+          <span>Adobe After Effects</span>
+          <span class="pill-level" data-tr="başlangıç" data-en="beginner">başlangıç</span>
+        </div>
+        <div class="smooth-pill">
+          <span>Adobe Photoshop</span>
+          <span class="pill-level" data-tr="başlangıç" data-en="beginner">başlangıç</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. DENEYİM (Saykon Tercüme, Espressolab, Coffeebul) -->
+    <section class="card">
+      <div class="section-head">
+        <span class="section-head-icon">💼</span>
+        <h2 data-tr="Deneyim" data-en="Experience">Deneyim</h2>
+      </div>
+      <div class="timeline">
+        
+        <!-- Çeviri Stajı: Saykon Tercüme Bürosu -->
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <span class="timeline-role" data-tr="Çeviri Stajyeri" data-en="Translation Intern">Çeviri Stajyeri</span>
+            <div class="timeline-workplaces">
+              <span class="workplace-tag">Saykon Tercüme Bürosu</span>
+            </div>
+          </div>
+          <p class="timeline-text" data-tr="Çeviri bürosunda staj yaptım." data-en="Internship experience at the translation agency.">
+            Çeviri bürosunda staj yaptım.
+          </p>
+        </div>
+
+        <!-- Baristalık: Espressolab & Coffeebul -->
+        <div class="timeline-card">
+          <div class="timeline-top">
+            <span class="timeline-role" data-tr="Barista" data-en="Barista">Barista</span>
+            <div class="timeline-workplaces">
+              <span class="workplace-tag">Espressolab</span>
+              <span class="workplace-tag">Coffeebul</span>
+            </div>
+          </div>
+          <p class="timeline-text" data-tr="1 senelik barista deneyimim var." data-en="1 year of barista experience.">
+            1 senelik barista deneyimim var.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. İLGİ ALANLARI / HOBİLER -->
+    <section class="card">
+      <div class="section-head">
+        <span class="section-head-icon">🎧</span>
+        <h2 data-tr="İlgi Alanları & Hobiler" data-en="Interests & Hobbies">İlgi Alanları & Hobiler</h2>
+      </div>
+      <div class="pill-grid">
+        <div class="smooth-pill">
+          <span>🎵</span>
+          <span data-tr="Müzik" data-en="Music">Müzik</span>
+        </div>
+        <div class="smooth-pill">
+          <span>🎮</span>
+          <span data-tr="Oyun Oynamak" data-en="Gaming">Oyun Oynamak</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. İLETİŞİM ALANI -->
+    <section class="card contact-box">
+      <div class="section-head" style="margin-bottom: 4px;">
+        <span class="section-head-icon">📬</span>
+        <h2 data-tr="İletişim" data-en="Contact">İletişim</h2>
+      </div>
+      <p style="font-size: 0.92rem; color: var(--text-muted);" data-tr="Bana e-posta üzerinden dilediğiniz zaman ulaşabilirsiniz:" data-en="Feel free to get in touch with me via email:">
+        Bana e-posta üzerinden dilediğiniz zaman ulaşabilirsiniz:
+      </p>
+      <a href="mailto:cevahirsule@gmail.com" class="email-btn">
+        <span>✉️</span>
+        <span>cevahirsule@gmail.com</span>
+      </a>
+    </section>
+
+    <!-- SAYFA ALTI BİLGİSİ -->
+    <footer>
+      <p>© 2026 Şule Cevahir</p>
+    </footer>
+
+  </div>
+
+  <!-- JAVASCRIPT: DİL DEĞİŞTİRME MEKANİZMASI -->
+  <script>
+    // Başlangıç dili Türkçe olarak ayarlı
+    let activeLanguage = 'tr';
+
+    function toggleLanguage() {
+      // Dili TR <-> EN arasında değiştir
+      activeLanguage = (activeLanguage === 'tr') ? 'en' : 'tr';
+
+      // Buton üstündeki etiketi güncelle
+      const langBtnText = document.getElementById('langBtnText');
+      langBtnText.textContent = (activeLanguage === 'tr') ? 'EN' : 'TR';
+
+      // 'data-tr' ve 'data-en' içeren tüm alanları pürüzsüzce güncelle
+      const translatableElements = document.querySelectorAll('[data-tr]');
+      translatableElements.forEach(element => {
+        if (activeLanguage === 'tr') {
+          element.textContent = element.getAttribute('data-tr');
+        } else {
+          element.textContent = element.getAttribute('data-en');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
